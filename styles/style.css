@@ -1,0 +1,339 @@
+/**************/
+/* CSS REMEDY */
+/**************/
+*, *::after, *::before {
+    box-sizing:border-box;  
+}
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+      display: none;
+}
+  /* Hide scrollbar for IE, Edge and Firefox */
+* {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+}
+  
+  
+  
+  /*********************/
+  /* CUSTOM PROPERTIES */
+  /*********************/
+  :root {
+    --white:#252525;
+    --bg:#e4ddd6;
+    --color1: #D8CCC0;
+    --offWhite:c8c8c8;
+    --offBlack:#212121;
+
+    --darkToDark: linear-gradient(to top, rgb(22, 21, 20), rgb(52, 50, 46));
+
+    --boxShadow1: 0 1rem 2rem rgba(36, 36, 36, 0.45);
+
+    --headerFont: "headline-gothic-atf", sans-serif;
+    --pFont: "modula-sans", sans-serif;
+  }
+  
+  /***********/
+  /* STYLING */
+  /***********/
+
+body {
+	margin: 0;
+    color: var(--white);
+	background-color: var(--bg);
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+* {
+	text-decoration: none;
+	color: inherit;
+	list-style: none;
+	scroll-behavior: smooth;
+	transition: all .4s;
+}
+
+h1,
+h2,
+h3{
+    background-image: var(--darkToDark);
+    color: transparent;
+    background-clip: text;
+}
+
+h1{
+    height: 100vh;
+    width: 100vw;
+    margin-top: -5rem;
+    margin-left: 2rem;
+    position: fixed;
+    top: 0;
+    font-family: var(--headerFont);
+    font-size: 45vw;
+    z-index: -1;
+    letter-spacing: -2.5rem;
+}
+
+h2{
+    font-family: var(--headerFont);
+    font-size: 8em;
+    margin: 2rem;
+}
+
+h3{
+    font-family: var(--headerFont);
+    font-size: 4em;
+    font-weight: 900;
+}
+
+p,
+li{
+    font-family: var(--pFont);
+    font-size: 2em;
+}
+
+main > section{
+    padding-top: 5vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+  /******************/
+  /* HEADER STYLING */
+  /******************/
+
+header{
+    height: 100vh;
+}
+
+nav{
+    height: 3rem;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    background-color: var(--bg);
+    z-index: 10;
+}
+
+nav ul{
+    width: 100%;
+    margin-top: .5rem;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    background-image: var(--darkToDark);
+    color: transparent;
+    background-clip: text;
+}
+
+nav ul li{
+    font-family: var(--headerFont);
+    font-size: 2em;
+    color: var(--white);
+}
+
+/* HOVER */
+nav ul li:hover{
+    transform: translate(0, .5rem);
+}
+
+
+  /******************/
+  /* FOOTER STYLING */
+  /******************/
+
+footer{
+    height: 40rem;
+    background-color: var(--bg);
+}
+
+  /****************/
+  /* MAIN STYLING */
+  /****************/
+
+main{
+    padding-top: 20rem;
+    background-color: var(--bg);
+}
+
+main > div:first-of-type{
+    height: 79.5vh;
+    width: 50vw;
+    position: absolute;
+    left: 50%;
+    bottom: -10rem;
+}
+
+main > div:first-of-type div{
+    position: relative;
+    left: 0;
+    height: 100%;
+    width: fit-content;
+    transform: translate(-50%, 0);
+    background-image: linear-gradient(to top, rgb(216, 204, 192), rgb(216, 204, 192), rgba(216, 204, 192, 0));
+    border-radius: 0 0 3rem 3rem;
+}
+
+main > div:first-of-type img{
+    height: 100%;
+    border-radius: 3rem;
+    transform: translate(0, .5rem);
+}
+
+main > div:first-of-type ul{
+    width: fit-content;
+    position: relative;
+    right: -20vw;
+    bottom: 40vh;
+}
+
+main > div:first-of-type ul li{
+    background-color: var(--bg);
+    margin-bottom: .5rem;
+    padding: 0 1rem;
+    width: fit-content;
+    border-radius: 1rem;
+    font-family: var(--headerFont);
+    font-size: 2.3em;
+    font-weight: 100;
+}
+
+/* HOVER */
+main > div:first-of-type div:hover img{
+    transform: translate(0, 0);
+}
+
+main > div:first-of-type ul li:hover{
+    transform: translate(.5rem, 0);
+}
+
+
+/* PORTFOLIO */
+
+section.portfolio > span{
+    margin: 8vw 0;
+    height: 100rem;
+    width: .5rem;
+    position: absolute;
+    right: 80.6vw;
+    background-color: var(--offWhite);
+}
+
+section.portfolio > div{
+    height: 15vw;
+    width: 60vw;
+    display: flex;
+    margin-bottom: 1rem;
+    border-radius: 1rem;
+}
+
+section.portfolio div > div{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+section.portfolio div > span{
+    height: 2rem;
+    width: 2rem;
+    align-self: center;
+    border-radius: 50%;
+    position: absolute;
+    right: 80vw;
+    background-color: var(--offWhite);
+}
+
+section.portfolio > div > h3{
+    align-self: center;
+    position: absolute;
+    right: 85vw;
+    font-size: 2.5em;
+}
+
+section.portfolio div > div:nth-of-type(1){
+    width: 60vw;
+    align-items: center;
+    /* border-radius: 1rem; */
+}
+
+section.portfolio div > div:nth-of-type(1) img{
+    width: 100%;
+    z-index: 5;
+}
+
+section.portfolio div > div:nth-of-type(2){
+    position: relative;
+    left: -50rem;
+    width: 0;
+    padding-left: 0;
+    flex-direction: column;
+}
+
+section.portfolio div > div:nth-of-type(2) p{
+    width: 100%;
+    text-overflow: clip;
+}
+
+/* HOVER */
+
+section.portfolio:has(> div:hover){
+    padding: 0;
+}
+
+section.portfolio > div:hover{
+    height: 25vw;
+    width: 90vw;
+    background-color: var(--color1);
+}
+
+section.portfolio > div:hover > h3{
+    transform: translate(0, 16vw);
+}
+
+section.portfolio > div:hover div:nth-of-type(1){
+    box-shadow: var(--boxShadow1);
+}
+
+section.portfolio > div:hover div:nth-of-type(1) img{
+    width: 115%;
+    transform: translate(0, 0) !important;
+}
+
+section.portfolio > div:hover div:nth-of-type(2){
+    width: 40vw;
+    padding: 5rem;
+    left: 0;
+}
+
+
+/* ACTING REEL */
+section.reel{
+    transition-duration: .8s;
+}
+
+section.reel div{
+    height: 28vw;
+    width: 50vw;
+    overflow: hidden;
+    border-radius: 1rem;
+    outline: 0 solid #00000062;
+    z-index: 5;
+}
+
+/* HOVER */
+section.reel:has(> div:hover) h2{
+    opacity: 0;
+    margin-bottom: -3vw;
+}
+
+section.reel div:hover{
+    height: 34vw;
+    width: 60vw;
+    outline: 100vh solid #0000008f;
+    border-radius: 0;
+    z-index: 15;
+}
