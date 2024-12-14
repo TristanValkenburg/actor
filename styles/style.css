@@ -274,7 +274,7 @@ section.reel{
 section.reel div{
     position: sticky;
     top: 35vh;
-    margin-top: 4rem;
+    margin: 4rem 0;
     height: calc(97vw / 16 * 9);
     max-height: calc(var(--secWidth) / 16 * 9);
     width: 100%;
@@ -320,7 +320,8 @@ section.portfolio > div > h3{
     display: none; 
     align-self: center;
     position: absolute;
-    right: 85vw;
+    left: -12rem;
+    top: 8rem;
     font-size: 2.5em;
 }
 
@@ -389,9 +390,9 @@ section.portfolio > div div p{
 
 
 /* HOVER */
-section.portfolio > div:hover > h3{
-    transform: translate(0, 16vw);
-}
+/* section.portfolio > div:hover > h3{
+    transform: translate(0, 5rem);
+} */
 
 section.portfolio > div:hover{
     box-shadow: var(--boxShadow4);
@@ -448,7 +449,8 @@ section.gallery > div img {
 }
 
 @keyframes autoBlurAnimation{
-    0%{filter: blur(30px);}
+    0%{filter: blur(0px);}
+    .1%{filter: blur(30px);}
     20%,80%{filter: blur(0px);}
     100%{filter: blur(30px);}
 }
@@ -458,6 +460,16 @@ section.gallery > div img {
 section.about{
     column-count: 2;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 /********************/
@@ -528,7 +540,6 @@ section.about{
     main > div:first-of-type ul li,
     main > div:first-of-type ul li span{
         width: fit-content;
-
         display: block !important;
     }
     
@@ -544,6 +555,19 @@ section.about{
         outline: 100vh solid #0000008f;
         border-radius: 0;
         z-index: 15;
+    }
+
+    /* PORTFOLIO */
+    section.portfolio > div > h3{
+        display: inline;
+    }
+
+    /* section.portfolio > div {
+        flex-direction: row;
+    } */
+
+    .mf-cursor{
+        opacity: 1;
     }
 
     /* section{
@@ -630,6 +654,7 @@ section.about{
 
 
 .mf-cursor{
+    opacity: 0;
     color: var(--offBlack);
 }
 
