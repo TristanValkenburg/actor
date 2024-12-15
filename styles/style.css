@@ -452,7 +452,9 @@ section.gallery > div img {
     0%{filter: blur(0px);}
     .1%{filter: blur(30px);}
     20%,80%{filter: blur(0px);}
-    100%{filter: blur(30px);}
+    99.9%{filter: blur(30px);}
+    100%{filter: blur(0px);}
+
 }
 
 /* ABOUT */
