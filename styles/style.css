@@ -32,7 +32,7 @@
 
     --boxShadow1: 0 1rem 2rem rgba(36, 36, 36, 0.264);
     --boxShadow2: 0 0 2rem rgba(36, 36, 36, 0.16);
-    --boxShadow3: 0 0 .5rem rgba(233, 214, 194, 0.293);
+    --boxShadow3: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;;
     --boxShadow4: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
     --headerFont: "headline-gothic-atf", sans-serif;
@@ -140,6 +140,7 @@ header{
 nav{
     height: 3rem;
     width: 100vw;
+    padding: 0 2rem;
     position: fixed;
     top: 0;
     background-color: var(--bg);
@@ -188,10 +189,10 @@ main{
 }
 
 main > div:first-of-type{
-    height: 65vh;
+    height: 60vh;
     width: 100vw;
     position: absolute;
-    bottom: 4rem;
+    bottom: 3rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -230,6 +231,7 @@ main > div:first-of-type ul li{
     border-radius: .5rem;
     font-family: var(--headerFont);
     font-weight: 100;
+    white-space: nowrap;
 }
 
 main > div:first-of-type ul li:has(span){
@@ -258,7 +260,8 @@ main > div:first-of-type div:hover img{
     transform: translate(0, 0);
 }
 
-main > div:first-of-type ul li:hover{
+main > div:first-of-type ul li:not(:has(span)):hover,
+main > div:first-of-type ul li span:hover{
     transform: translate(.5rem, 0);
 }
 
@@ -323,6 +326,7 @@ section.portfolio > div > h3{
     left: -12rem;
     top: 8rem;
     font-size: 2.5em;
+    animation: fadeOut .4s;
 }
 
 section.portfolio > div{
@@ -364,7 +368,16 @@ section.portfolio > div div a{
     transform: translate(0, 1rem);
     background-color: var(--color1T);
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+section.portfolio > div div a img{
+    width: 2.6rem;
+}
+
+
 
 section.portfolio > div div h3{
     width: fit-content;
@@ -374,6 +387,8 @@ section.portfolio > div div h3{
     border-radius: .5rem;
     font-size: 2rem;
     font-weight: 100;
+    white-space: nowrap;
+    /* animation-fill-mode: forwards; */
 }
 
 section.portfolio > div div h3.tooDark {
@@ -386,13 +401,15 @@ section.portfolio > div div p{
     margin: 0;
     padding: 0 .5rem;
     opacity: 0;
+    transition: .3s;
 }
 
 
 /* HOVER */
-/* section.portfolio > div:hover > h3{
-    transform: translate(0, 5rem);
-} */
+section.portfolio > div:hover > h3{
+    transform: translate(17.5rem, 17.5rem);
+    animation: fadeIn .4s;
+}
 
 section.portfolio > div:hover{
     box-shadow: var(--boxShadow4);
@@ -403,6 +420,16 @@ section.portfolio > div:hover div a{
     height: var(--linkSize);
     margin-bottom: calc(var(--linkSize) * -1);
     opacity: 1;
+}
+
+@keyframes linkPop {
+    from,to {opacity: 1; transform: translate(0);}
+    50% {opacity: .5; transform: translate(0, -.3rem);}
+}
+
+section.portfolio > div:hover div a img{
+    animation: linkPop 1s;
+    animation-delay: .2s;
 }
 
 section.portfolio > div:hover div h3{
@@ -422,8 +449,19 @@ section.portfolio > div:hover div p{
     opacity: 1;
 }
 
-section.portfolio > div:hover div img{
+section.portfolio > div:hover > div > img{
     transform: scale(1.15);
+}
+
+/* LINK HOVER */
+
+section.portfolio > div div a:hover{
+    box-shadow: var(--boxShadow3);
+}
+
+section.portfolio > div div a:hover img{
+    opacity: .6; 
+    transform: translate(0, -.1rem);
 }
 
 
@@ -465,6 +503,33 @@ section.about{
 
 
 
+
+
+
+
+/* CURSOR */
+
+/* .mf-cursor {
+    width: 40px;
+    height: 40px;
+    background-color:var(--color1) ;
+    border-radius: 50%;
+    margin: -20px 0 0 -20px;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+  } */
+
+
+  .mf-cursor{
+    opacity: 0;
+    color: var(--offBlack);
+}
 
 
 
@@ -564,9 +629,6 @@ section.about{
         display: inline;
     }
 
-    /* section.portfolio > div {
-        flex-direction: row;
-    } */
 
     .mf-cursor{
         opacity: 1;
@@ -583,6 +645,65 @@ section.about{
     /* section{
         max-width: 1280px
     } */
+
+    section.portfolio > div{
+        flex-direction: row;
+    }
+    
+    
+    section.portfolio > div div img{
+        width: var(--secWidth);
+    }
+
+    section.portfolio > div div:last-of-type{
+        width: 0;
+        padding: 0;
+    }
+
+    section.portfolio > div div h3{
+        margin-top: 1.5rem;
+        margin-left: calc((var(--secWidth) * -1) + 2rem);
+        /* margin-left: -10rem; */
+        animation: fadeOut .4s;
+    }
+
+    /* H3 LESS OBTRUSIVE GOING BACK AND FORTH ON HOVER */
+    @keyframes fadeIn {
+        from,to {opacity: 1;}
+        50% {opacity: .2;}
+    }
+
+    @keyframes fadeOut {
+        from,to {opacity: 1;}
+        50% {opacity: .2;}
+    }
+
+    /* HOVER */
+
+    section.portfolio > div:hover {
+        width: 180%;
+    }
+    
+    section.portfolio > div:hover div:last-of-type{
+        width: 80%;
+        padding: 2rem;
+    }
+
+    section.portfolio > div:hover div h3{
+        margin: 0;
+        animation: fadeIn .4s;
+    }
+
+    section.portfolio > div:hover div img{
+        transform: scale(1);
+        height: 100%;
+    }
+
+    section.portfolio > div:hover div{
+        padding: 0;
+        margin: 0;
+    }
+
 }
 
 /* 2xl */
@@ -636,50 +757,3 @@ section.about{
 
 
 
-/* CURSOR */
-
-/* .mf-cursor {
-    width: 40px;
-    height: 40px;
-    background-color:var(--color1) ;
-    border-radius: 50%;
-    margin: -20px 0 0 -20px;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    z-index: 10;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-  } */
-
-
-.mf-cursor{
-    opacity: 0;
-    color: var(--offBlack);
-}
-
-  /* #cursorDot,
-  #cursorOutline{
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  
-  #cursorDot{
-    height: 5px;
-    width: 5px;
-    background-color: var(--offBlack);
-  }
-
-  #cursorOutline{
-    height: 30px;
-    width: 30px;
-    background-color: var(--color1T);
-  } */
