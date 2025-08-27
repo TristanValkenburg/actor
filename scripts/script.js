@@ -28,34 +28,36 @@ window.addEventListener("scroll", () => {
   h1.style.opacity = opacity;
 });
 
+
 const cards = document.querySelectorAll('section.work > div > article');
 
 cards.forEach(card => {
+  let isHovered = false;
+
   card.addEventListener('click', e => {
     if (window.matchMedia('(hover: none)').matches) {
       const link = e.target.closest('a');
-      const isHovered = card.classList.contains('hovered');
 
       if (!isHovered) {
-        // first tap → reveal overlay
-        e.preventDefault();        // block any link click
-        cards.forEach(c => c.classList.remove('hovered'));
+        // First tap: reveal overlay
+        e.preventDefault();
+        isHovered = true;
         card.classList.add('hovered');
       } else {
-        // already hovered
+        // Second tap: navigate if it's a link
         if (link) {
-          // second tap on link → navigate manually
-          window.location = link.href;
+          window.location.href = link.href;
         } else {
-          // tap outside link → hide overlay
+          // Tap outside link: close overlay
           card.classList.remove('hovered');
+          isHovered = false;
         }
       }
     }
   });
 });
 
-// close overlay when tapping outside
+// Close overlay when tapping outside any card
 document.addEventListener('click', e => {
   if (window.matchMedia('(hover: none)').matches) {
     if (!e.target.closest('section.work > div > article')) {
