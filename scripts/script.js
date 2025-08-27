@@ -28,31 +28,36 @@ window.addEventListener("scroll", () => {
   h1.style.opacity = opacity;
 });
 
-
+// --- Card hover mobile ---
 const cards = document.querySelectorAll('section.work > div > article');
 
 cards.forEach(card => {
   card.addEventListener('click', e => {
     if (window.matchMedia('(hover: none)').matches) {
-      const overlay = card.querySelector('a');
-      const isHovered = card.classList.contains('hovered');
-      const linkClicked = e.target.closest('a');
+      const link = e.target.closest('a');
 
-      if (!isHovered) {
-        e.preventDefault(); // prevent navigating on first tap
+      // not hovered yet
+      if (!card.classList.contains('hovered')) {
+        // if it's the first tap and they hit the link, block it
+        if (link) e.preventDefault();
+
+        // close all other cards first
         cards.forEach(c => c.classList.remove('hovered'));
         card.classList.add('hovered');
-      } else if (!linkClicked) {
-        // tap outside link closes overlay
-        e.preventDefault();
-        card.classList.remove('hovered');
+      } else {
+        // already hovered
+        if (!link) {
+          // tap elsewhere on card closes it
+          e.preventDefault();
+          card.classList.remove('hovered');
+        }
+        // if link → do nothing, let it navigate
       }
-      // else: tap on link → navigate normally
     }
   });
 });
 
-// click outside closes overlay
+// close all cards when clicking outside
 document.addEventListener('click', e => {
   if (window.matchMedia('(hover: none)').matches) {
     if (!e.target.closest('section.work > div > article')) {
