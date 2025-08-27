@@ -334,6 +334,7 @@ section.work > div article{
     padding: 0;
     border-radius: 1rem;
     background-color: #000;
+    overflow: hidden;
 }
 
 section.work > div article > img{
@@ -353,15 +354,15 @@ section.work > div article div{
     flex-direction: column ;
     align-items: center;
     justify-content: center;
-    border: var(--white) solid .4rem;
+    border: var(--color1) solid .4rem;
     border-radius: inherit;
 }
 
 section.work > div article div h3{
     margin: 1rem 0;
     padding: 0 .5rem;
-    color: var(--white);
-    border: var(--white) .4rem solid;
+    color: var(--color1);
+    border: var(--color1) .4rem solid;
     border-radius: inherit;
 }
 
@@ -377,7 +378,7 @@ section.work > div article div p{
     margin: 0;
     width: 85%;
     color: var(--white);
-    font-size: .8em;
+    font-size: 1.2em;
     text-align: center;
 }
 
@@ -392,37 +393,30 @@ section.work > div article div a{
 
 /* HOVER */
 
-section.work > div article:hover div,
-section.work > div article.hovered div{
+section.work > div article:hover div{
     opacity: 1;
 }
 
-section.work > div article:hover > img,
-section.work > div article.hovered > img{
+section.work > div article:hover > img{
     filter: blur(.5rem) opacity(.5);
+    scale: 1.1;
 }
 
-section.work > div article div h3:hover,
-section.work > div article.hovered div h3{
-    color: var(--color1);
-    border: var(--color1) .4rem solid;
+section.work > div article:hover div h3{
     padding-right: 1.3em;
 }
 
-section.work > div article div:has(h3:hover),
-section.work > div article.hovered div{
+section.work > div article:hover div{
     color: var(--color1);
     border: var(--color1) .4rem solid;
 }
 
-section.work > div article div h3:hover img,
-section.work > div article.hovered div h3 img{
+section.work > div article:hover div h3 img{
     opacity: 1;
     translate: .1em .1em;
 }
 
-section.work > div article:hover div a,
-section.work > div article.hovered div a{
+section.work > div article:hover div a{
     height: 100%;
     width: 100%;
 }
