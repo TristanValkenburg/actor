@@ -28,71 +28,43 @@ window.addEventListener("scroll", () => {
   h1.style.opacity = opacity;
 });
 
+// --- Card hover mobile ---
 const cards = document.querySelectorAll('section.work > div > article');
-const transitionDuration = 300; // match CSS opacity duration in ms
 
 cards.forEach(card => {
-  const link = card.querySelector('a');
-
   card.addEventListener('click', e => {
     if (window.matchMedia('(hover: none)').matches) {
-      const targetLink = e.target.closest('a');
+      const link = e.target.closest('a');
 
+      // not hovered yet
       if (!card.classList.contains('hovered')) {
-        // First tap → show overlay
-        if (targetLink) e.preventDefault(); // block immediate navigation
+        // if it's the first tap and they hit the link, block it
+        if (link) e.preventDefault();
 
-        // Close other cards
-        cards.forEach(c => {
-          if (c !== card) {
-            hideCard(c);
-            c.classList.remove('hovered');
-          }
-        });
-
-        showCard(card);
+        // close all other cards first
+        cards.forEach(c => c.classList.remove('hovered'));
+        card.classList.add('hovered');
       } else {
-        // Already hovered
-        if (!targetLink) {
-          // Tap outside the link → hide overlay
-          hideCard(card);
+        // already hovered
+        if (!link) {
+          // tap elsewhere on card closes it
+          e.preventDefault();
+          card.classList.remove('hovered');
         }
-        // If link → allow navigation
+        // if link → do nothing, let it navigate
       }
     }
   });
 });
 
-// Optional: close all cards when tapping outside
+// close all cards when clicking outside
 document.addEventListener('click', e => {
   if (window.matchMedia('(hover: none)').matches) {
     if (!e.target.closest('section.work > div > article')) {
-      cards.forEach(card => hideCard(card));
+      cards.forEach(c => c.classList.remove('hovered'));
     }
   }
 });
-
-// --- helper functions ---
-function showCard(card) {
-  const link = card.querySelector('a');
-  card.classList.add('hovered');
-  link.style.display = 'flex';
-  // small timeout to trigger transition
-  setTimeout(() => {
-    link.style.opacity = '1';
-    link.style.pointerEvents = 'auto';
-  }, 10);
-}
-
-function hideCard(card) {
-  const link = card.querySelector('a');
-  card.classList.remove('hovered');
-  link.style.opacity = '0';
-  link.style.pointerEvents = 'none';
-  setTimeout(() => {
-    link.style.display = 'none';
-  }, transitionDuration);
-}
 
 
 
