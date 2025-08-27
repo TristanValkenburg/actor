@@ -342,7 +342,7 @@ section.work > div > article > img{
     border-radius: inherit;
 }
 
-section.work > div > article a{
+section.work > div > article div a{
     opacity: 0;
     position: absolute;
     display: flex;
@@ -357,7 +357,7 @@ section.work > div > article a{
     border-radius: inherit;
 }
 
-section.work > div > article a h3{
+section.work > div > article div a h3{
     margin: 1rem 0;
     padding: 0 .5rem;
     color: var(--white);
@@ -365,7 +365,7 @@ section.work > div > article a h3{
     border-radius: inherit;
 }
 
-section.work > div > article a h3 img{
+section.work > div > article div a h3 img{
     opacity: 0;
     position: absolute;
     height: 1em;
@@ -373,7 +373,7 @@ section.work > div > article a h3 img{
     filter: var(--blackToColor1);
 }
 
-section.work > div > article a p{
+section.work > div > article div a p{
     margin: 0;
     width: 85%;
     color: var(--white);
@@ -384,8 +384,8 @@ section.work > div > article a p{
 
 /* HOVER */
 
-section.work > div > article:hover a,
-section.work > div > article.hovered a{
+section.work > div > article:hover div a,
+section.work > div > article.hovered div a{
     opacity: 1;
 }
 
@@ -394,21 +394,21 @@ section.work > div > article.hovered > img{
     filter: blur(.5rem) opacity(.5);
 }
 
-section.work > div > article a h3:hover,
-section.work > div > article.hovered a h3{
+section.work > div > article div a h3:hover,
+section.work > div > article.hovered div a h3{
     color: var(--color1);
     border: var(--color1) .4rem solid;
     padding-right: 1.3em;
 }
 
-section.work > div > article a:has(h3:hover),
-section.work > div > article.hovered a{
+section.work > div > article div a:has(h3:hover),
+section.work > div > article.hovered div a{
     color: var(--color1);
     border: var(--color1) .4rem solid;
 }
 
-section.work > div > article a h3:hover img,
-section.work > div > article.hovered a h3 img{
+section.work > div > article div a h3:hover img,
+section.work > div > article.hovered div a h3 img{
     opacity: 1;
     translate: .1em .1em;
 }

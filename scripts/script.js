@@ -32,32 +32,27 @@ window.addEventListener("scroll", () => {
 const cards = document.querySelectorAll('section.work > div > article');
 
 cards.forEach(card => {
-  let isHovered = false;
-
   card.addEventListener('click', e => {
     if (window.matchMedia('(hover: none)').matches) {
-      const link = e.target.closest('a');
+      const overlay = card.querySelector('a');
+      const isHovered = card.classList.contains('hovered');
+      const linkClicked = e.target.closest('a');
 
       if (!isHovered) {
-        // First tap: reveal overlay
-        e.preventDefault();
-        isHovered = true;
+        e.preventDefault(); // prevent navigating on first tap
+        cards.forEach(c => c.classList.remove('hovered'));
         card.classList.add('hovered');
-      } else {
-        // Second tap: navigate if it's a link
-        if (link) {
-          window.location.href = link.href;
-        } else {
-          // Tap outside link: close overlay
-          card.classList.remove('hovered');
-          isHovered = false;
-        }
+      } else if (!linkClicked) {
+        // tap outside link closes overlay
+        e.preventDefault();
+        card.classList.remove('hovered');
       }
+      // else: tap on link → navigate normally
     }
   });
 });
 
-// Close overlay when tapping outside any card
+// click outside closes overlay
 document.addEventListener('click', e => {
   if (window.matchMedia('(hover: none)').matches) {
     if (!e.target.closest('section.work > div > article')) {
