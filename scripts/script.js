@@ -34,30 +34,28 @@ const cards = document.querySelectorAll('section.work > div > article');
 cards.forEach(card => {
   card.addEventListener('click', e => {
     if (window.matchMedia('(hover: none)').matches) {
-      const link = e.target.closest('a');
+      const isHovered = card.classList.contains('hovered');
 
-      // not hovered yet
-      if (!card.classList.contains('hovered')) {
-        // if it's the first tap and they hit the link, block it
-        if (link) e.preventDefault();
-
-        // close all other cards first
+      if (!isHovered) {
+        // First tap → reveal overlay
+        e.preventDefault();  // block any link click
         cards.forEach(c => c.classList.remove('hovered'));
         card.classList.add('hovered');
       } else {
-        // already hovered
-        if (!link) {
-          // tap elsewhere on card closes it
+        // Already hovered
+        const linkClicked = e.target.closest('a');
+        if (!linkClicked) {
+          // tap outside link → close overlay
           e.preventDefault();
           card.classList.remove('hovered');
         }
-        // if link → do nothing, let it navigate
+        // tap on link → do nothing, allow navigation
       }
     }
   });
 });
 
-// close all cards when clicking outside
+// Close overlays when clicking outside any card
 document.addEventListener('click', e => {
   if (window.matchMedia('(hover: none)').matches) {
     if (!e.target.closest('section.work > div > article')) {
