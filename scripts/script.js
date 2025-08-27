@@ -68,6 +68,7 @@ document.addEventListener('click', e => {
 
 
 
+
 // ---POP IN ANIMATION ---
 // assign popIn to wrapper children first
 document.querySelectorAll('.popInWrapper').forEach(wrapper => {

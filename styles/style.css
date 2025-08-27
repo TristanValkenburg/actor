@@ -345,17 +345,16 @@ section.work > div > article > img{
 section.work > div > article a{
     opacity: 0;
     position: absolute;
+    display: none;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%; 
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border: var(--white) solid .4rem;
     border-radius: inherit;
-    pointer-events: none;
 }
 
 section.work > div > article a h3{
@@ -389,7 +388,7 @@ section.work > div > article a p{
 section.work > div > article:hover a,
 section.work > div > article.hovered a{
     opacity: 1;
-    pointer-events: auto;
+    display: flex;
 }
 
 section.work > div > article:hover > img,
