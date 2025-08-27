@@ -357,6 +357,7 @@ section.work > div > article a{
     border: var(--white) solid .4rem;
     border-radius: inherit;
     transition: height 0s, width 0s;
+    transition-delay: 1s;
 }
 
 section.work > div > article a h3{
