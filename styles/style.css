@@ -129,9 +129,8 @@ h2,
 
 .popIn {
   opacity: 0;
-  transform: scale(0.9) translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  will-change: opacity, transform;
+  transform: scale(0.9) translateY(3rem);
+  transition: all 0.6s ease;
 }
 
 .popIn.visible {
@@ -209,10 +208,10 @@ main{
 }
 
 main > div:first-of-type{
-    height: 65vh;
+    height: 55vh;
     width: 100vw;
     position: absolute;
-    bottom: 4.5rem;
+    bottom: 3rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -233,6 +232,8 @@ main > div:first-of-type img{
     height: 100%;
     border-radius: 3rem;
     transform: translate(0, .5rem);
+    transition-delay: 1s !important;
+    transition-duration: 1s !important;
 }
 
 main > div:first-of-type ul{
@@ -354,6 +355,7 @@ section.work > div > article a{
     justify-content: center;
     border: var(--white) solid .4rem;
     border-radius: inherit;
+    pointer-events: none;
 }
 
 section.work > div > article a h3{
@@ -387,6 +389,7 @@ section.work > div > article a p{
 section.work > div > article:hover a,
 section.work > div > article.hovered a{
     opacity: 1;
+    pointer-events: auto;
 }
 
 section.work > div > article:hover > img,
@@ -475,13 +478,15 @@ section.about{
 /* xxs */
 @media (min-width: 420px) {
 
-    main > div:first-of-type{
-        height: 60vh;
-    }
+    
 }
 
 /* xs */
 @media (min-width: 500px) {
+
+    main > div:first-of-type{
+        height: 60vh;
+    }
 
     main > div:first-of-type ul{
         width: calc(45vh);
