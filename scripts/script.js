@@ -28,34 +28,34 @@ window.addEventListener("scroll", () => {
   h1.style.opacity = opacity;
 });
 
-// --- Card hover mobile ---
 const cards = document.querySelectorAll('section.work > div > article');
 
 cards.forEach(card => {
   card.addEventListener('click', e => {
     if (window.matchMedia('(hover: none)').matches) {
+      const link = e.target.closest('a');
       const isHovered = card.classList.contains('hovered');
 
       if (!isHovered) {
-        // First tap → reveal overlay
-        e.preventDefault();  // block any link click
+        // first tap → reveal overlay
+        e.preventDefault();        // block any link click
         cards.forEach(c => c.classList.remove('hovered'));
         card.classList.add('hovered');
       } else {
-        // Already hovered
-        const linkClicked = e.target.closest('a');
-        if (!linkClicked) {
-          // tap outside link → close overlay
-          e.preventDefault();
+        // already hovered
+        if (link) {
+          // second tap on link → navigate manually
+          window.location = link.href;
+        } else {
+          // tap outside link → hide overlay
           card.classList.remove('hovered');
         }
-        // tap on link → do nothing, allow navigation
       }
     }
   });
 });
 
-// Close overlays when clicking outside any card
+// close overlay when tapping outside
 document.addEventListener('click', e => {
   if (window.matchMedia('(hover: none)').matches) {
     if (!e.target.closest('section.work > div > article')) {

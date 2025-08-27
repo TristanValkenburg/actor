@@ -355,9 +355,6 @@ section.work > div > article a{
     justify-content: center;
     border: var(--white) solid .4rem;
     border-radius: inherit;
-
-    pointer-events: none; /* Start unclickable */
-    transition: opacity 0.3s ease;
 }
 
 section.work > div > article a h3{
@@ -390,8 +387,6 @@ section.work > div > article a p{
 section.work > div > article:hover a,
 section.work > div > article.hovered a{
     opacity: 1;
-    pointer-events: auto; /* becomes clickable */
-
 }
 
 section.work > div > article:hover > img,
