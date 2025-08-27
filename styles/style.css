@@ -21,25 +21,30 @@
   /* CUSTOM PROPERTIES */
   /*********************/
   :root {
-    --white:#252525;
-    --bg:#e4ddd6;
-    --color1: #D8CCC0;
-    --color1T: #c1ac9955;
-    --offWhite: #c8c8c8;
-    --offBlack:#212121;
+      --bg:#f9ede0;
+      --white: #ffffff;
+      --color1: #ff6357;
+      --color2: #22201d;
+      --color1T: #ffeede71;
+      --offBlack:#252525;
+      --offWhite: #d2d2d2;
 
-    --darkToDark: linear-gradient(to top, rgb(22, 21, 20), rgb(52, 50, 46));
+      --blackToColor1: invert(46%) sepia(76%) saturate(2095%) hue-rotate(329deg) brightness(111%) contrast(103%);
 
-    --boxShadow1: 0 1rem 2rem rgba(36, 36, 36, 0.264);
+;
+
+    --darkToDark: linear-gradient(to bottom, rgb(0, 0, 0), rgb(37, 10, 10));
+
+    --boxShadow1: rgba(0, 0, 0, 0.4) 0px 20px 60px;
     --boxShadow2: 0 0 2rem rgba(36, 36, 36, 0.16);
     --boxShadow3: rgba(99, 99, 99, 0.4) 0px 2px 8px 0px;;
     --boxShadow4: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 
     --headerFont: "headline-gothic-atf", sans-serif;
-    --pFont: "modula-sans", sans-serif;
+    --pFont:  "aptly", "modula-sans", sans-serif;
 
     --secWidth: 720px;
-}
+  }
   
   /***********/
   /* STYLING */
@@ -48,7 +53,7 @@
   
 body {
 	margin: 0;
-    color: var(--white);
+    color: var(--offBlack);
 	background-color: var(--bg);
     width: 100%;
     overflow-x: hidden;
@@ -82,12 +87,13 @@ h1{
     color: transparent;
     background-clip: text;
     z-index: -1;
+    transition: opacity 0s;
 }
 
 h2{
     font-family: var(--headerFont);
     font-size: 3rem;
-    margin: 2rem;
+    margin: .5em;
     padding: 0 .5rem;
     position: sticky;
     top: 4rem;
@@ -115,19 +121,24 @@ main > section{
     align-items: center;
 }
 
-.gallery > div img:hover,
-.portfolio > div,
-.glass{
+h2,
+.glass {
     background-color: var(--color1T);
-    backdrop-filter: blur(.5rem);
+    backdrop-filter: blur(.8rem) brightness(110%);
 }
 
-h2,
-.portfolio > div div h3,
-.brightGlass {
-    background-color: #d2c4b671;
-    backdrop-filter: blur(.5rem) brightness(150%);
+.popIn {
+  opacity: 0;
+  transform: scale(0.9) translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
 }
+
+.popIn.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
 
   /******************/
   /* HEADER STYLING */
@@ -140,11 +151,13 @@ header{
 nav{
     height: 3rem;
     width: 100vw;
-    padding: 0 2rem;
     position: fixed;
     top: 0;
     background-color: var(--bg);
     z-index: 10;
+}
+
+nav.scrolled{
     box-shadow: var(--boxShadow2);
 }
 
@@ -160,13 +173,21 @@ nav ul{
 }
 
 nav ul li{
-    font-family: var(--headerFont);
-    color: var(--white);
+    text-align: center;
+    color: var(--offBlack);
+}
+
+nav ul li:first-of-type{
+    text-align: left;
+}
+
+nav ul li:last-of-type{
+    text-align: right;
 }
 
 /* HOVER */
 nav ul li:hover{
-    transform: translate(0, .5rem);
+    color: var(--color1);
 }
 
 
@@ -185,14 +206,13 @@ footer{
 
 main{
     background-color: var(--bg);
-    /* box-shadow: var(--boxShadow3); */
 }
 
 main > div:first-of-type{
-    height: 60vh;
+    height: 65vh;
     width: 100vw;
     position: absolute;
-    bottom: 3rem;
+    bottom: 4.5rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -224,13 +244,14 @@ main > div:first-of-type ul{
     bottom: -1.5rem;
 }
 
-main > div:first-of-type ul li{
+main > div:first-of-type ul li,
+main > div:first-of-type ul li span{
     margin-bottom: .5rem;
-    padding: 0 1rem;
+    padding: .2em .2em;
     width: 100%;
     border-radius: .5rem;
-    font-family: var(--headerFont);
-    font-weight: 100;
+    font-family: var(--pFont);
+    font-weight: 700;
     white-space: nowrap;
 }
 
@@ -241,13 +262,6 @@ main > div:first-of-type ul li:has(span){
     grid-template-columns: 1fr 1fr;
     gap: .5rem;
 }
-
-main > div:first-of-type ul li span{
-    padding: 0 1rem;
-    width: 100%;
-    border-radius: inherit;
-}
-
 
 /* hide for mobile */
 main > div:first-of-type ul li:nth-of-type(1),
@@ -266,11 +280,14 @@ main > div:first-of-type ul li span:hover{
 }
 
 
+
+
 /* ACTING REEL */
+
 section.reel{
     transition-duration: .8s;
-    height: 100vh;
-    width: 97vw;
+    /* height: 100vh; */
+    /* width: 97vw; */
     
 }
 
@@ -281,189 +298,120 @@ section.reel div{
     height: calc(97vw / 16 * 9);
     max-height: calc(var(--secWidth) / 16 * 9);
     width: 100%;
+    max-width: var(--secWidth);
     overflow: hidden;
     border-radius: 1rem;
     outline: 0 solid #00000062;
     z-index: 5;
 }
 
-/* HOVER */
-/* section.reel:has(> div:hover) h2{
-    opacity: 0;
-    margin-bottom: -3vw;
+
+
+
+
+/* work */
+
+section > p{
+    margin: 0 0 .5em 0;
+    width: 100%;
+    text-align: left;
 }
 
-section.reel div:hover{
-    height: 34vw;
-    width: 60vw;
-    outline: 100vh solid #0000008f;
-    border-radius: 0;
-    z-index: 15;
-} */
-
-
-
-/* PORTFOLIO */
-
-/* section.portfolio > div:first-of-type{
-    margin-bottom: 5rem;
-    padding: 5rem 2rem;
-    width: 85%;
-    border-radius: 3rem;
-    text-align: center;
-}
-
-section.portfolio > div:first-of-type p{
-    font-weight: 700;
-    font-size: 2rem;
-} */
-
-/* hide years for mobile */
-section.portfolio > div > h3{
-    display: none; 
-    align-self: center;
-    position: absolute;
-    left: -12rem;
-    top: 8rem;
-    font-size: 2.5em;
-    animation: fadeOut .4s;
-}
-
-section.portfolio > div{
+section.work > div{
     height: fit-content;
     width: 100%;
     margin-bottom: 1rem;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
+    gap: .5rem;
 }
 
-section.portfolio > div div:first-of-type {
-    width: 100%;
-    margin-bottom: -.5rem;
-    border-radius: inherit;
-    overflow: hidden;
-}
-
-section.portfolio > div div img {
-    width: 100%;
-    border-radius: inherit;
-}
-
-section.portfolio > div div:last-of-type{
+section.work > div > article{
+    position: relative;
     height: fit-content;
-    bottom: 1rem;
-    padding: 0 .5rem;
+    padding: 0;
+    border-radius: 1rem;
+    background-color: #000;
+}
+
+section.work > div > article > img{
+    display: block;
+    width: 100%;
+    border-radius: inherit;
+}
+
+section.work > div > article a{
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
     display: flex;
     flex-direction: column;
-}
-
-section.portfolio > div div a{
-    align-self: last baseline;
-    height: 0;
-    --linkSize: 4rem;
-    width: var(--linkSize);
-    opacity: 0;
-    border-radius: 1rem;
-    transform: translate(0, 1rem);
-    background-color: var(--color1T);
-    text-align: center;
-    display: flex;
     align-items: center;
     justify-content: center;
+    border: var(--white) solid .4rem;
+    border-radius: inherit;
 }
 
-section.portfolio > div div a img{
-    width: 2.6rem;
-}
-
-
-
-section.portfolio > div div h3{
-    width: fit-content;
-    margin: 0;
-    margin-top: -1.5em;
+section.work > div > article a h3{
+    margin: 1rem 0;
     padding: 0 .5rem;
-    border-radius: .5rem;
-    font-size: 2rem;
-    font-weight: 100;
-    white-space: nowrap;
-    /* animation-fill-mode: forwards; */
+    color: var(--white);
+    border: var(--white) .4rem solid;
+    border-radius: inherit;
 }
 
-section.portfolio > div div h3.tooDark {
-    background-color: #e3d7cb97;
-    backdrop-filter: blur(.5rem) brightness(300%);
-}
-
-section.portfolio > div div p{
-    height: 0;
-    margin: 0;
-    padding: 0 .5rem;
+section.work > div > article a h3 img{
     opacity: 0;
-    transition: .3s;
+    position: absolute;
+    height: 1em;
+    translate: -1em .1em;
+    /* transition: all ease .6s; */
+    filter: var(--blackToColor1);
+}
+
+section.work > div > article a p{
+    margin: 0;
+    width: 85%;
+    color: var(--white);
+    font-size: .8em;
+    text-align: center;
 }
 
 
 /* HOVER */
-section.portfolio > div:hover > h3{
-    transform: translate(17.5rem, 17.5rem);
-    animation: fadeIn .4s;
-}
 
-section.portfolio > div:hover{
-    box-shadow: var(--boxShadow4);
-    margin-bottom: 2rem;
-}
-
-section.portfolio > div:hover div a{
-    height: var(--linkSize);
-    margin-bottom: calc(var(--linkSize) * -1);
+section.work > div > article:hover a,
+section.work > div > article.hovered a{
     opacity: 1;
 }
 
-@keyframes linkPop {
-    from,to {opacity: 1; transform: translate(0);}
-    50% {opacity: .5; transform: translate(0, -.3rem);}
+section.work > div > article:hover > img,
+section.work > div > article.hovered > img{
+    filter: blur(.5rem) opacity(.5);
 }
 
-section.portfolio > div:hover div a img{
-    animation: linkPop 1s;
-    animation-delay: .2s;
+section.work > div > article a h3:hover,
+section.work > div > article.hovered a h3{
+    color: var(--color1);
+    border: var(--color1) .4rem solid;
+    padding-right: 1.3em;
 }
 
-section.portfolio > div:hover div h3{
-    /* background-color: var(--offBlack);
-    color: var(--offWhite); */
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: 3rem;
+section.work > div > article a:has(h3:hover),
+section.work > div > article.hovered a{
+    color: var(--color1);
+    border: var(--color1) .4rem solid;
 }
 
-section.portfolio > div:hover div{
-    padding-bottom: 1rem;
-}
-
-section.portfolio > div:hover div p{
-    height: 1em;
+section.work > div > article a h3:hover img,
+section.work > div > article.hovered a h3 img{
     opacity: 1;
+    translate: .1em .1em;
 }
-
-section.portfolio > div:hover > div > img{
-    transform: scale(1.15);
-}
-
-/* LINK HOVER */
-
-section.portfolio > div div a:hover{
-    box-shadow: var(--boxShadow3);
-}
-
-section.portfolio > div div a:hover img{
-    opacity: .6; 
-    transform: translate(0, -.1rem);
-}
-
 
 
 
@@ -495,6 +443,8 @@ section.gallery > div img {
 
 }
 
+
+
 /* ABOUT */
 
 section.about{
@@ -503,27 +453,6 @@ section.about{
 
 
 
-
-
-
-
-/* CURSOR */
-
-/* .mf-cursor {
-    width: 40px;
-    height: 40px;
-    background-color:var(--color1) ;
-    border-radius: 50%;
-    margin: -20px 0 0 -20px;
-    pointer-events: none;
-    mix-blend-mode: multiply;
-    z-index: 10;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-  } */
 
 
   .mf-cursor{
@@ -543,14 +472,24 @@ section.about{
 /* RESPONSIVE STUFF */
 /********************/
 
-/* xs */
-@media (min-width: 475px) {
-    main > div:first-of-type div{
-        width: fit-content;
+/* xxs */
+@media (min-width: 420px) {
+
+    main > div:first-of-type{
+        height: 60vh;
     }
+}
+
+/* xs */
+@media (min-width: 500px) {
 
     main > div:first-of-type ul{
         width: calc(45vh);
+    }
+
+    main > div:first-of-type div{
+        width: fit-content;
+        
     }
 
     /* section{
@@ -576,18 +515,39 @@ section.about{
 /* md */
 @media (min-width: 768px) {
 
-    /* section{
+    section{
         max-width: 768px;
-    } */
+    }
 
 }
 
-/* lg */
+    /***********/
+    /* DESKTOP */
+    /***********/
+
 @media (min-width: 1024px) {
+
+    section{
+        max-width: 1024px;
+    }
+
+    nav{
+        padding: 0 2rem;
+        height: 3.5rem;
+    }
+
+    nav ul li{
+    width: 3em;
+}
 
     h1{
         margin-top: -6.5vw;
         font-size: 45.7vw;
+    }
+
+    h2{
+        font-size: 4em;
+        margin: 1em;
     }
 
     main > div:first-of-type{
@@ -596,8 +556,6 @@ section.about{
     }
 
     main > div:first-of-type ul{
-        /* position: absolute; */
-        /* margin-left: 4rem; */
         right: -2rem;
         bottom: -15vh;
         width: 1px;
@@ -624,104 +582,52 @@ section.about{
         z-index: 15;
     }
 
-    /* PORTFOLIO */
-    section.portfolio > div > h3{
-        display: inline;
+    /* work */
+    section.work > div{
+        display: block;
+        -webkit-column-count: 2;    
+        -webkit-column-gap: 1rem;    
+        -moz-column-count: 2;
+        -moz-column-gap: 1rem;
+        column-count: 2;    
+        column-gap: 1rem;
     }
 
-
-    .mf-cursor{
-        opacity: 1;
+    section.work > p{
+        display: none;
     }
 
-    /* section{
-        max-width: 1024px;
-    } */
+    section.work > div > article{
+        margin-bottom: 1rem;
+    }
 
 }
 
 /* xl */
 @media (min-width: 1280px) {
-    /* section{
+    section{
         max-width: 1280px
-    } */
-
-    section.portfolio > div{
-        flex-direction: row;
     }
+}    
     
-    
-    section.portfolio > div div img{
-        width: var(--secWidth);
-    }
 
-    section.portfolio > div div:last-of-type{
-        width: 0;
-        padding: 0;
-    }
-
-    section.portfolio > div div h3{
-        margin-top: 1.5rem;
-        margin-left: calc((var(--secWidth) * -1) + 2rem);
-        /* margin-left: -10rem; */
-        animation: fadeOut .4s;
-    }
-
-    /* H3 LESS OBTRUSIVE GOING BACK AND FORTH ON HOVER */
-    @keyframes fadeIn {
-        from,to {opacity: 1;}
-        50% {opacity: .2;}
-    }
-
-    @keyframes fadeOut {
-        from,to {opacity: 1;}
-        50% {opacity: .2;}
-    }
-
-    /* HOVER */
-
-    section.portfolio > div:hover {
-        width: 180%;
-    }
-    
-    section.portfolio > div:hover div:last-of-type{
-        width: 80%;
-        padding: 2rem;
-    }
-
-    section.portfolio > div:hover div h3{
-        margin: 0;
-        animation: fadeIn .4s;
-    }
-
-    section.portfolio > div:hover div img{
-        transform: scale(1);
-        height: 100%;
-    }
-
-    section.portfolio > div:hover div{
-        padding: 0;
-        margin: 0;
-    }
-
-}
 
 /* 2xl */
 @media (min-width: 1536px) {
 
-    /* section{
+    section{
         max-width: 1536px;
-    } */
+    }
 
     h1{
-        margin-top: -5rem;
+        margin-top: -3.5rem;
         margin-left: 2rem;
         top: 0;
         font-size: 45vw;
         letter-spacing: -2.5rem;
     }
 
-    li,p{
+    li,p,a{
         font-size: 2rem;
     }
 
@@ -734,9 +640,10 @@ section.about{
 }
 
 @media (min-width: 1024px) {
-    section{
+    
+    /* section{
         max-width: var(--secWidth);
-    }
+    } */
 
     /* GALLERY */
 

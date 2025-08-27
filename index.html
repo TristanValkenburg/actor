@@ -29,102 +29,95 @@
 	<header id="home">
         <nav id="navbar">
             <ul>
-                <li><a href="#home">HOME</a></li>
-                <li><a href="#reel">ACTINGREEL</a></li>
-                <li><a href="#portfolio">PORTFOLIO</a></li>
-                <li><a href="#gallery">GALLERY</a></li>
-                <li><a href="#about">ABOUT</a></li>
+                <li class="popIn"><a href="#home">HOME</a></li>
+                <li class="popIn"><a href="#reel">REEL</a></li>
+                <li class="popIn"><a href="#work">WORK</a></li>
+                <li class="popIn"><a href="#gallery">GALLERY</a></li>
+                <li class="popIn"><a href="#about">ABOUT</a></li>
             </ul>
         </nav>
         <h1>TRISTAN</h1>
 	</header>
 
 	<main>
-        <div><div class="brightGlass"><img src="c/photos/headshot.png"></div>
+        <div><div class="glass popIn"><img src="c/photos/headshot.png"></div>
             <ul>
-                <li class="brightGlass">TRISTAN VALKENBURG</li>
-                <li class="brightGlass">ACTOR</li>
-                <li class="brightGlass">VALKENBURGTRISTAN@GMAIL.COM</li>
-                <li><span class="brightGlass">+31647236868</span>
-                    <span class="brightGlass">@tris.valk</span></li>
+                <li class="glass popIn">TRISTAN VALKENBURG</li>
+                <li class="glass popIn">ACTOR</li>
+                <li class="glass popIn">
+                    <a href="mailto:valkenburgtristan@gmail.com" alt="click to Email me">VALKENBURGTRISTAN@GMAIL.COM</a></li>
+                <li>
+                    <span class="glass popIn">+31647236868</span>
+                    <span class="glass popIn">
+                        <a href="https://www.instagram.com/tris.valk/" target="_blank" alt="click to visit my Instagram">@TRIS.VALK</a></span>
+                </li>
             </ul>
         </div>
 
-        <section class="reel" id="reel">
-            <!-- <h2>ACTING REEL</h2> -->
+        <section class="reel popIn" id="reel">
             <div>
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/-53FaneLw8c?si=Bbm7ItTOIU-qGHFb"title="reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/HkH5kDA2AoE?si=fazw7Ne0h9NR6cfb"title="reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </section>
 
-		<section class="portfolio" id="portfolio">
-            <h2>PORTFOLIO</h2>
-            <div>
-                <div><img src="c/portfolio/bloodbound.jpg"></div>
-                <div>
-                    <!-- onclick="location.href='#about';" style="cursor: pointer;" -->
-                    <a href="."><img src="c/icons/externalLink.svg" alt="click for more details on an external page"></a>
-                    <h3>Bloodbound</h3>
-                    <p>Prince - Lead Role</p>
-                    <p>Written and Directed by Samuel Mracka</p>
-                    <p>We shot this film in Slovakia and Luxembourg</p>
-                    <p>another test</p>
-                </div>
-            </div>
-            <div><h3>2024</h3>
-                <div><img src="c/portfolio/ifOnlyIWere.jpg"></div>
-                <div>
-                    <a target="_blank" href="https://youtu.be/G_QLkle_Qw4"><img src="c/icons/externalLink.svg" alt="click for more details on an external page"></a>
-                    <h3 class="tooDark">If Only I Were</h3>
-                    <p>bla bla bla vla</p>
-                </div>
-            </div>
-            <div>
-                <div><img src="c/portfolio/samRosa.jpg"></div>
-                <div>
-                    <h3>Sam & Rosa</h3>
-                    <p>bla bla bla vla</p>
-                </div>
-            </div>
-            <div>
-                <div><img src="c/portfolio/gameOfTag.jpg"></div>
-                <div>
-                    <h3>The Game Of Tag</h3>
-                    <p>bla bla bla vla</p>
-                </div>
-            </div>
-            <div>
-                <div><img src="c/portfolio/knallen.jpg"></div>
-                <div>
-                    <h3 class="tooDark">Knallen</h3>
-                    <p>bla bla bla vla</p>
-                </div>
-            </div>
-            <div><h3>2023</h3>
-                <div><img src="c/portfolio/schuld.jpg"></div>
-                <div>
-                    <h3>Schuld</h3>
-                    <p>bla bla bla vla</p>
-                </div>
-            </div>
-            <div>
-                <div><img src="c/portfolio/inReverse.jpg"></div>
-                <div>
-                    <h3 class="tooDark">In Reverse</h3>
-                    <p>bla bla bla vla</p>
-                </div>
-            </div>
-            <div><h3>2019</h3>
-                <div><img src="c/portfolio/brugklas.jpg"></div>
-                <div>
-                    <a target="_blank" href="https://www.zapp.nl/programmas/brugklastv/gemist/AT_2123186"><img src="c/icons/externalLink.svg" alt="click for more details on an external page"></a>
-                    <h3>Brugklas</h3>
-                    <p>bla bla bla vla</p>
-                </div>
+        <section class="work" id="work">
+            <h2 class="popIn">work</h2>
+            <p class="popIn">Click any card to expand.</p>
+            <div class="popInWrapper">
+                <article>
+                    <img src="c/work/bloodbound.jpg">
+                    <a href="https://www.youtube.com/" target="_blank" alt="click to watch">
+                        <h3>Bloodbound <img src="c/icons/externalLink.svg" alt=""></h3>
+                        <p>Directed by Samuel Mračka</p>
+                        <p>A period drama shot entirely on location in Slovakia and Luxembourg.</p>
+                    </a>
+                </article>
+                <article>
+                    <img src="c/work/ifOnlyIWere.jpg">
+                    <a href=".">
+                        <h3>If Only I Were <img src="c/icons/externalLink.svg" alt=""></h3>
+                    </a>
+                </article>
+                <article>
+                    <img src="c/work/samRosa.jpg">
+                    <a href=".">
+                        <h3>Sam & Rosa <img src="c/icons/externalLink.svg" alt=""></h3>
+                    </a>
+                </article>
+                <article>
+                    <img src="c/work/gameOfTag.jpg">
+                    <a href=".">
+                        <h3>The Game Of Tag <img src="c/icons/externalLink.svg" alt=""></h3>
+                    </a>
+                </article>
+                <article>
+                    <img src="c/work/knallen.jpg">
+                    <a href=".">
+                        <h3>Knallen <img src="c/icons/externalLink.svg" alt=""></h3>
+                    </a>
+                </article>
+                <article>
+                    <img src="c/work/schuld.jpg">
+                    <a href=".">
+                        <h3>Schuld <img src="c/icons/externalLink.svg" alt=""></h3>
+                    </a>
+                </article>
+                <article>
+                    <img src="c/work/inReverse.jpg">
+                    <a href=".">
+                        <h3>In Reverse <img src="c/icons/externalLink.svg" alt=""></h3>
+                    </a>
+                </article>
+                <article>
+                    <img src="c/work/brugklas.jpg">
+                    <a href=".">
+                        <h3>Brugklas <img src="c/icons/externalLink.svg" alt=""></h3>
+                    </a>
+                </article>
             </div>
         </section>
 
-        <section class="gallery" id="gallery">
+        <!-- <section class="gallery" id="gallery">
             <h2>GALLERY</h2>
             <div>
                 <img src="c/photos/01.jpg" alt="portrait photo. credit: Ies Kaczmarec">
@@ -154,24 +147,15 @@
                 <img src="c/photos/25.jpg" alt="portrait photo. credit: Ies Kaczmarec">
                 <img src="c/photos/26.jpg" alt="portrait photo. credit: Ies Kaczmarec">
             </div>
-        </section>
+        </section> -->
         
-        <section class="about" id="about">
+        <!-- <section class="about" id="about">
             <h2>ABOUT</h2>
-            <p>Hi, I'm Tristan Valkenburg - an actor, model, and stunt performer based in Amsterdam. With a deep passion for storytelling and an adventurous spirit, I bring authenticity and energy to every project I take on, whether it's in front of the camera, on stage, or exploring physical challenges through stunts.</p>
-            <p>My journey in the arts began early, from school plays to professional productions. Over the years, I’ve honed my craft through diverse training programs, including acting schools in the Netherlands and an exchange year in the U.S. My portfolio spans everything from dramatic indie films to immersive theater experiences like The Amsterdam Dungeon. Each project has sharpened my skills and strengthened my commitment to delivering compelling performances.</p>
-            <p>Beyond acting, I’m an all-round creative with a love for physical storytelling. My athletic skills in snowboarding, parkour, kickboxing, and stage combat enable me to push boundaries and immerse myself fully in action-packed roles. Off set, I’ve also explored the modeling world, lending my style to campaigns for brands like ABN Amro and RegioBank.</p>
-            <p>When I’m not acting, I’m probably seeking inspiration through travel. From backpacking across Southeast Asia to solo interrailing through Norway, these experiences fuel my creativity and expand my understanding of the world – perspectives I bring to every character I portray.</p>
-            <p>I’m driven, versatile, and ready to take on challenging roles that connect with audiences. Whether you’re looking for a leading actor, a stunt performer, or someone who’s simply eager to collaborate, I’d love to help bring your vision to life.</p>
-            <p>Let’s create something extraordinary together!</p>
-        </section>
+        </section> -->
 	</main>
 
 	<footer>
 	</footer>
-
-    <div id="cursorDot"></div>
-    <div id="cursorOutline"></div>
     
 	<script defer src="scripts/script.js"></script>
 </body>
