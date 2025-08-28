@@ -39,7 +39,7 @@ document.querySelectorAll('.popInWrapper').forEach(wrapper => {
 // select all .popIn
 const popIn = document.querySelectorAll('.popIn');
 
-const maxDelayItems = 12;      // ---adjust depending on landing page items---
+const maxDelayItems = 11;      // ---adjust depending on landing page items---
 const delayStep = 0.07;        // seconds per stagger
 
 // add delay to landing page
