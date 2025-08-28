@@ -15,17 +15,29 @@
       scrollbar-width: none;  /* Firefox */
 }
   
-  
+
+.noselect,
+section.work > div article {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+    supported by Chrome, Edge, Opera and Firefox */
+}
   
   /*********************/
   /* CUSTOM PROPERTIES */
   /*********************/
   :root {
-      --bg:#f9ede0;
+      --bg:#fff7ef;
       --white: #ffffff;
       --color1: #ff6357;
-      --color2: #22201d;
-      --color1T: #ffeede71;
+      --color2: #ebc4c1;
+      --color3: #622822;
+      --color1T: #e6cdb571;
+      --colorLink: #cfd7fe;
       --offBlack:#252525;
       --offWhite: #d2d2d2;
 
@@ -93,8 +105,14 @@ h1{
 h2{
     font-family: var(--headerFont);
     font-size: 3rem;
+    color: var(--white);
+    text-shadow: -.07em .07em var(--color3);
+    display: inline-block;
+    translate: .07em -.07em;
     margin: .5em;
-    padding: 0 .5rem;
+    padding: 0 .5em;
+    background-color: var(--color1T);
+    backdrop-filter: blur(.8rem) brightness(110%);
     position: sticky;
     top: 4rem;
     border-radius: 1rem;
@@ -121,7 +139,6 @@ main > section{
     align-items: center;
 }
 
-h2,
 .glass {
     background-color: var(--color1T);
     backdrop-filter: blur(.8rem) brightness(110%);
@@ -194,9 +211,13 @@ nav ul li:hover{
   /* FOOTER STYLING */
   /******************/
 
-footer{
-    height: 40rem;
-    background-color: var(--bg);
+footer p{
+    width: 100vw;
+    margin: 4rem 0 0 0;
+    padding: .5rem;
+    text-align: center;
+    color: var(--bg);
+    background-color: var(--color2);
 }
 
   /****************/
@@ -266,7 +287,7 @@ main > div:first-of-type ul li:has(span){
 
 /* hide for mobile */
 main > div:first-of-type ul li:nth-of-type(1),
-main > div:first-of-type ul li:nth-of-type(2){
+main > div:first-of-type ul li:nth-of-type(1){
     display: none;
 }
 
@@ -318,7 +339,8 @@ section > p{
     text-align: left;
 }
 
-section.work > div{
+section.work > div,
+section.about > div{
     height: fit-content;
     width: 100%;
     margin-bottom: 1rem;
@@ -328,7 +350,8 @@ section.work > div{
     gap: .5rem;
 }
 
-section.work > div article{
+section.work > div article,
+section.about > div article{
     position: relative;
     height: fit-content;
     padding: 0;
@@ -337,7 +360,8 @@ section.work > div article{
     overflow: hidden;
 }
 
-section.work > div article > img{
+section.work > div article > img,
+section.about > div article > img{
     display: block;
     width: 100%;
     border-radius: inherit;
@@ -423,55 +447,60 @@ section.work > div article:hover div a{
 
 
 
-/* GALLERY */
-
-section.gallery > div{
-    -webkit-column-count: 2;    
-    -webkit-column-gap: .5rem;    
-    -moz-column-count: 2;
-    -moz-column-gap: .5rem;
-    column-count: 2;    
-    column-gap: .5rem;
-}
-
-section.gallery > div img {
-    width: 100%;
-    border-radius: 1rem;
-    margin-bottom: .3rem;
-    animation: autoBlurAnimation linear both;
-    animation-timeline: view();
-}
-
-@keyframes autoBlurAnimation{
-    0%{filter: blur(0px);}
-    .1%{filter: blur(30px);}
-    20%,80%{filter: blur(0px);}
-    99.9%{filter: blur(30px);}
-    100%{filter: blur(0px);}
-
-}
-
-
-
 /* ABOUT */
 
-section.about{
-    column-count: 2;
+section.about > div article:not(:has(>img)) {
+    color: var(--white);
+    background-color: var(--color2);
+    border: var(--color2) .4rem solid;
+    padding: 1em;
+}
+
+/* PROOF OF CONCEPT */
+section.about > div article,
+footer p{
+  background: linear-gradient(-45deg, #c6827d, #ae6e57, #b0807c, rgb(102, 73, 73));
+  background-size: 400% 400%;
+  animation: gradientShift 60s ease infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+section.about > div article:not(:has(>img)) *{
+    margin: 0;
+    padding: 0;
+}
+
+section.about > div article h3{
+    text-shadow: -.07em .07em var(--color3);
+    display: inline-block;
+    translate: .07em -.07em;
 }
 
 
-
-
-
-  .mf-cursor{
-    opacity: 0;
-    color: var(--offBlack);
+section.about > div article p span{
+    text-shadow: -.1em .1em var(--color3);
+    display: inline-block;
+    translate: .1em -.1em;
 }
 
+section.about > div article ul li a span{
+    color: var(--colorLink);
+    text-shadow: -.1em .1em #44485d;
+    display: inline-block;
+    translate: .1em -.1em;
+}
 
+/* HOVER */
 
-
-
+section.about > div article ul li a:hover span{
+    text-shadow: -.2em .2em #44485d;
+    display: inline-block;
+    translate: .2em -.2em;
+}
 
 
 
@@ -547,8 +576,8 @@ section.about{
     }
 
     nav ul li{
-    width: 3em;
-}
+        width: 3em;
+    }
 
     h1{
         margin-top: -6.5vw;
@@ -558,6 +587,8 @@ section.about{
     h2{
         font-size: 4em;
         margin: 1em;
+        top: 4.7rem;
+
     }
 
     main > div:first-of-type{
@@ -593,7 +624,8 @@ section.about{
     }
 
     /* work */
-    section.work > div{
+    section.work > div,
+    section.about > div{
         display: block;
         -webkit-column-count: 2;    
         -webkit-column-gap: 1rem;    
@@ -607,8 +639,14 @@ section.about{
         display: none;
     }
 
-    section.work > div > article{
+    section.work > div > article,
+    section.about > div > article{
         margin-bottom: 1rem;
+    }
+
+    section.work > div article div p,
+    section.about > div article div p{
+        font-size: 1.6em;
     }
 
 }
