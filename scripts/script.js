@@ -61,3 +61,24 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.1 });
 
 popIn.forEach(el => observer.observe(el));
+
+// Work On Click
+
+document.querySelectorAll('section.work article').forEach(card => {
+    card.addEventListener('click', (e) => {
+        if (e.target.closest('a')) return;
+
+        document.querySelectorAll('section.work article.active').forEach(active => {
+            if (active !== card) active.classList.remove('active');
+        });
+
+        card.classList.toggle('active');
+    });
+});
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('section.work article')) {
+        document.querySelectorAll('section.work article.active')
+            .forEach(card => card.classList.remove('active'));
+    }
+});
