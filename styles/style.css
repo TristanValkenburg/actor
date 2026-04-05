@@ -100,6 +100,7 @@ h1{
     white-space: nowrap;
     transform: translateX(-50%) scaleX(1.02);
     background-image: var(--darkToDark);
+    transition: none;
     color: transparent;
     background-clip: text;
     z-index: -1;
