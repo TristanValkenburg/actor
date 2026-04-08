@@ -62,7 +62,6 @@ const observer = new IntersectionObserver(entries => {
 
 popIn.forEach(el => observer.observe(el));
 
-
 // Work On Click
 
 document.querySelectorAll('section.work article').forEach(card => {

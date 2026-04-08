@@ -81,7 +81,8 @@ body {
 	transition: all ease .4s;
 }
 
-section{
+section,
+#introNReel{
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -136,7 +137,9 @@ li{
     font-size: 1.6rem;
 }
 
-main > section{
+main > section,
+#introNReel,
+main #introNReel > section{
     padding-top: 5vw;
     display: flex;
     flex-direction: column;
@@ -573,7 +576,7 @@ section.intro > div > article:has(>a){
 } 
 
 section.intro > div > article > a{
-    margin: 0 .3rem;
+    margin: 0 0 0 .6rem !important;
     padding: 0.3rem 1.2rem;
     color: var(--color1);
     border: .15rem var(--color1) solid;
@@ -681,7 +684,7 @@ section.intro > div > article > a:hover{
         font-size: 3rem;
         margin: 1rem !important;
     }
-    
+
     main > div:first-of-type{
         flex-direction: row;
         justify-content: center;
@@ -704,9 +707,8 @@ section.intro > div > article > a:hover{
         margin-bottom: .5rem;
     }
 
-
     /* REEL */
-
+    
     section.reel div:hover{
         transform: scale(1.4);
         outline: 100vh solid #0000008f;
@@ -761,9 +763,11 @@ section.intro > div > article > a:hover{
 
 /* xl */
 @media (min-width: 1280px) {
-    section{
+    section,
+    #introNReel{
         max-width: 1280px
     }
+
 }    
     
 
@@ -771,7 +775,8 @@ section.intro > div > article > a:hover{
 /* 2xl */
 @media (min-width: 1536px) {
 
-    section{
+    section,
+    #introNReel{
         max-width: 1536px;
     }
 
@@ -782,6 +787,29 @@ section.intro > div > article > a:hover{
 
     li,p,a{
         font-size: 2rem;
+    }
+
+    /* INTRO N REEL */
+    
+    #introNReel{
+        flex-direction: row-reverse;
+        align-items: stretch;
+    }
+    
+    #introNReel section div{
+        width: 100%;
+    }
+    
+    #introNReel section:last-child div{
+        margin: 3rem 0 10.5rem 0;
+    }
+
+    #introNReel:has(section:last-child div:hover) section:first-child{
+        opacity: 0;
+    }
+    
+    #introNReel section:last-child:has(div:hover){
+            transform: translateX(50%)
     }
 
     /* REEL */
