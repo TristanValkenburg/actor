@@ -70,7 +70,6 @@ body {
 	background-color: var(--bg);
     width: 100%;
     overflow-x: hidden;
-    /* cursor: none; */
 }
 
 * {
@@ -134,7 +133,15 @@ a,
 p,
 li{
     font-family: var(--pFont);
+}
+
+a,
+li{
     font-size: 1.6rem;
+}
+
+p{
+    font-size: 1.1rem;
 }
 
 main > section,
@@ -258,7 +265,7 @@ main > div:first-of-type div{
 
 main > div:first-of-type img{
     height: 100%;
-    border-radius: 3rem;
+    /* border-radius: 3rem; */
     transform: translate(0, .5rem);
     transition-delay: 1s !important;
     transition-duration: 1s !important;
@@ -288,7 +295,7 @@ main > div:first-of-type ul li:has(span){
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     gap: .5rem;
 }
 
@@ -413,7 +420,6 @@ section.work > div article div p{
     width: 85%;
     font-family: var(--pFontAlt);
     color: var(--white);
-    font-size: 1.2em;
     line-height: 1.1em;
     text-align: center;
 }
@@ -560,7 +566,6 @@ section.intro > div > article{
 section.intro > div > article p{
         color: #000;
         font-family: var(--pFontAlt);
-        font-size: 1.2rem;
 } 
 
 section.intro > div > article p span{
@@ -648,6 +653,9 @@ section.intro > div > article > a:hover{
         max-width: 768px;
     }
 
+    p{
+        font-size: 1.4rem;
+    }
 }
 
     /***********/
@@ -667,6 +675,10 @@ section.intro > div > article > a:hover{
 
     nav ul li{
         width: 3em;
+    }
+
+    p{
+        font-size: 1.4rem;
     }
 
     h1{
@@ -718,7 +730,8 @@ section.intro > div > article > a:hover{
 
     /* work */
     section.work > div,
-    section.about:not(.contact, .intro) > div{
+    section.about:not(.contact, .intro) > div,
+    section.intro > div article{
         display: block;
         -webkit-column-count: 2;    
         -webkit-column-gap: 1rem;    
@@ -739,25 +752,23 @@ section.intro > div > article > a:hover{
 
     section.work > div article div p,
     section.about > div article div p{
-        font-size: 1.6em;
         line-height: normal;    
     }
 
     /* CONTACT and INTRO */
-
-    section.contact > div,
-    section.intro > div{
-        width: 42vw;
+    
+    section.intro > div article p:first-of-type{
+        margin-top: 0;
     }
-
-    section.intro > div > article p{
-        font-size: 1.6em;
-    } 
     
     section.intro > div > article > a{
         margin: 0 .7rem;
         padding: 0.5rem 1.5rem;
     } 
+
+    section.contact{
+        width: 42vw;
+    }
 
 }
 
@@ -768,29 +779,23 @@ section.intro > div > article > a:hover{
         max-width: 1280px
     }
 
-}    
-    
-
-
-/* 2xl */
-@media (min-width: 1536px) {
-
-    section,
-    #introNReel{
-        max-width: 1536px;
-    }
-
-    h1{
-        margin-top: -3.5rem;
-        top: 0;
-    }
-
-    li,p,a{
-        font-size: 2rem;
+    a,
+    li{
+        font-size: 1.8rem;
     }
 
     /* INTRO N REEL */
+
+    section.intro > div article{
+        -webkit-column-count: 1;    
+        -moz-column-count: 1;
+        column-count: 1;    
+    }
     
+    section.intro > div article p:first-of-type{
+        margin-top: .8em;
+    }
+
     #introNReel{
         flex-direction: row-reverse;
         align-items: stretch;
@@ -810,6 +815,32 @@ section.intro > div > article > a:hover{
     
     #introNReel section:last-child:has(div:hover){
             transform: translateX(50%)
+    }
+
+}    
+    
+
+
+/* 2xl */
+@media (min-width: 1536px) {
+
+    section,
+    #introNReel{
+        max-width: 1536px;
+    }
+
+    h1{
+        margin-top: -3.5rem;
+        top: 0;
+    }
+
+    a,
+    li{
+        font-size: 2rem;
+    }
+
+    p{
+        font-size: 1.6rem;
     }
 
     /* REEL */
