@@ -264,11 +264,11 @@ main > div:first-of-type div{
 }
 
 main > div:first-of-type img{
-    height: 100%;
-    /* border-radius: 3rem; */
+    height: 126%;
     transform: translate(0, .5rem);
     transition-delay: 1s !important;
     transition-duration: 1s !important;
+    object-position: center top;
 }
 
 main > div:first-of-type ul{
@@ -278,6 +278,7 @@ main > div:first-of-type ul{
     padding: 0;
     position: relative;
     bottom: -1.5rem;
+    transform: scaleX(min(1, 98vw / 400px));
 }
 
 main > div:first-of-type ul li,
@@ -701,6 +702,11 @@ section.intro > div > article > a:hover{
         flex-direction: row;
         justify-content: center;
     }
+
+    main > div:first-of-type img{
+        height: 100%;
+    }
+
 
     main > div:first-of-type ul{
         right: -2rem;
